@@ -8,5 +8,6 @@ var d = {
     eyesight : 1 
 };
 
-console.log(d.weight);
-console.log['eyesight']
+//객체 접근 방법 
+console.log(d.weight); //84. 객체 값은 가장 마지막에 있는 값으로 나온다. 
+console.log(d['eyesight'])
