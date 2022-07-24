@@ -16,3 +16,9 @@ orderHeight = height
 //왜라는게 없음.. 그냥 그런 함수임 우리는 그걸 야무지게 활용하면 됨.
 
 console.log(orderHeight);
+
+if (unsorted === sorted) {
+  console.log("Yes");
+} else {
+  console.log("No");
+}
