@@ -27,3 +27,5 @@ winner = Object.keys(result).reduce(function (a, b) {
 console.log(winner);
 
 //Object.keys() 메소드는 주어진 객체의 속성 이름들을 일반적인 반복문과 동일한 순서로 순회되는 열거할 수 있는 배열로 반환한다.
+//reduce 함수 매우 어렵네...
+//배열.reduce((누적값, 현잿값, 인덱스, 요소) => { return 결과 }, 초깃값);
