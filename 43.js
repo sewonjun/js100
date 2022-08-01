@@ -1,10 +1,22 @@
 //사용자에게 숫자를 입력받고 이를 2진수로 바꾸고 그 값을 출력해주세요.
 
-const var1 = valueOf(){return prompt("insert a number");
+// while(i){
+//     alert(i);
+//     i--;
+// }
+// 이 상황에서 while반복문은 i가 0이 되면 falsy로 판단돼 반복문을 멈춘다.
 
-let var2 = parseInt(var1, 2);
+//버전1
+let num = "32";
+let arrayNum = [];
 
-let val3 = parseInt(var2, 2);
+while (num) {
+  arrayNum.push(num % 2);
+  num = Math.floor(num / 2);
+}
 
-//parseInt에 대해 다시 공부하기 
-//2진법 공부하기 
+console.log(arrayNum.reverse().join(""));
+
+//버전2
+//let num = 160;
+//console.log(num.toString(2));
