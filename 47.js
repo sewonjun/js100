@@ -9,4 +9,11 @@ const people = {
   이호준: "01050442903",
 };
 
-let array1 = console.log(people.split(","));
+let result = new Set();
+for (let key in people) {
+  result.add(people[key]);
+}
+
+console.log(result.size);
+
+//set 공부 다시하세요.
