@@ -6,7 +6,9 @@ function bubble(arr) {
   for (let i = 0; i < result.length - 1; i++) {
     for (let j = 0; j < result.length - 1; j++) {
       if (result[j] > result[j + 1]) {
-        //빈칸을 채워주세요.
+        let temp = result[j];
+        result[j] = result[j + 1];
+        result[j + 1] = temp;
       }
     }
   }
@@ -20,5 +22,3 @@ const items = prompt("입력해주세요.")
   });
 
 console.log(bubble(items));
-
-//다시
