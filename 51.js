@@ -38,3 +38,5 @@ const array = prompt("배열을 입력하세요")
   .split("")
   .map((n) => parseInt(n, 10));
 console.log(mergeSort(array));
+
+//commit testing
