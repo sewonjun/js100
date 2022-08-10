@@ -18,7 +18,7 @@ function quickSort(arr) {
   return quickSort(left).concat(pivot, quickSort(right));
 }
 
-const array = pormpt("배열을입력하세요")
+const array = prompt("배열을입력하세요")
   .split(" ")
   .map((n) => parseInt(n, 10));
 console.log(quickSort(array));
