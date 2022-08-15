@@ -7,6 +7,35 @@
 
 const val1 = "{[[}";
 
-let splitVal1 = val.split("");
+function mathBracket(e) {
+  let count = 0;
+  for (i = 0; i < e.length; i++) {
+    if (e[i] === "(") {
+      count++;
+    }
+    if (e[i] === ")") {
+      count--;
+    }
+  }
+  if (count !== 0) {
+    return false;
+  }
 
-console.log(splitVal1);
+  let bracket = [];
+  for (let i in e) {
+    if (e[i] === "(") {
+      bracket.push("(");
+    }
+    if (e[i] === ")") {
+      bracket.pop();
+    }
+  }
+  return true;
+}
+
+const n = prompt("insert bracket").split("");
+if (mathBracket(n) === true) {
+  console.log("YES");
+} else {
+  console.log("NO");
+}
