@@ -19,6 +19,7 @@ function mergeSort(arr) {
 function merge(left, right) {
   let result = [];
   while (left.length && right.length) {
+    //left.length = left의 길이가 존재하는 한 이라는 뜻.
     if (left[0] < right[0]) {
       result.push(left.shift());
     } else {
