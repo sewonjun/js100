@@ -33,6 +33,7 @@ function sol(l) {
   });
 
   for (let i = 0; i < l.length - 1; i++) {
+    console.log(l[i] l[i + 1]);
     if (l[i] + 1 !== l[i + 1]) {
       return "No";
     }
@@ -45,3 +46,4 @@ const n = prompt("입력해주세요")
   .map((n) => parseInt(n, 10));
 
 console.log(sol(n));
+//이거 답 아닌것 같다 ㅠㅠ 근데 왜인지 모름.. ㅎ
