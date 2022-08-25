@@ -8,10 +8,12 @@
 function mathBracket(e) {
   let count = 0;
   for (i = 0; i < e.length; i++) {
+    //단순한 짝 맞는지 알아보는 코드 
     if (e[i] === "(") {
       count++;
     }
     if (e[i] === ")") {
+      if()
       count--;
     }
   }
@@ -26,14 +28,14 @@ function mathBracket(e) {
       console.log(bracket);
     }
     if (e[i] === ")") {
-      if (braket === 0) {
+      if (bracket.length === 0) {
         return false;
       }
       bracket.pop();
       console.log(bracket);
     }
+    return true;
   }
-  return true;
 }
 
 const n = prompt("insert bracket").split("");

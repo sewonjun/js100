@@ -5,7 +5,7 @@ let continuousNum = prompt("insert continous number")
   .split("")
   .map((continuousNum) => parseInt(continuousNum, 10));
 
-console.log(continuousNum);
+console.log(`continuousNum: ${continuousNum}`);
 
 let sortNum = "";
 
@@ -13,15 +13,17 @@ sortNum = continuousNum.sort(function (a, b) {
   return a - b;
 });
 
-console.log(sortNum);
+console.log(`sortNum:${sortNum} `);
 
 let verifyNums = [];
-for (i = sortNum[0]; i <= sortNum.length; i++) {
-  console.log(i);
-  verifyNums.push(parseInt(i, 10));
+// for (i = sortNum[0]; i <= sortNum.length; i++)
+//이렇게 하면 i가 2면 반복횟수가 이상해진다!! 정신차리자
+for (i = 0; i <= sortNum.length - 1; i++) {
+  let first = sortNum[0];
+  verifyNums.push(parseInt(first + i, 10));
 }
 
-console.log(verifyNums);
+console.log(`verifyNums:${verifyNums}`);
 console.log(JSON.stringify(verifyNums) == JSON.stringify(sortNum));
 
 //답안
