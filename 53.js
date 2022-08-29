@@ -8,12 +8,11 @@
 function mathBracket(e) {
   let count = 0;
   for (i = 0; i < e.length; i++) {
-    //단순한 짝 맞는지 알아보는 코드 
+    //단순한 짝 맞는지 알아보는 코드
     if (e[i] === "(") {
       count++;
     }
     if (e[i] === ")") {
-      if()
       count--;
     }
   }

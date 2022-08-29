@@ -12,7 +12,7 @@
 
 const route = [];
 
-function hanoi(원반갯수, 시작기둥, 목표기둥, 보조기둥) {
+function hanoi(num, start, end, temp) {
   if (num === 1) {
     route.push([start, end]);
     return NaN;
