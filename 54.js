@@ -23,8 +23,19 @@ for (i = 0; i <= sortNum.length - 1; i++) {
   verifyNums.push(parseInt(first + i, 10));
 }
 
+//편한데.. 이렇게 해도 괜찮은지 모르겠음. json 형식으로 바꿔서 비교하는데 순서대로 비교하기 때문에 틀리지는 않을듯    
 console.log(`verifyNums:${verifyNums}`);
 console.log(JSON.stringify(verifyNums) == JSON.stringify(sortNum));
+
+
+//하나씩 비교하기 
+for(i=0;  i<sortNum.length; i++ ){
+  if(sortNum[i]!==verifyNums[i]){
+    console.log("false")
+  } else {
+    console.log("true")
+  }
+}
 
 //답안
 function sol(l) {

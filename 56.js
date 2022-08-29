@@ -15,12 +15,14 @@ const entry = Object.entries(nationWidth);
 console.log(entry);
 //entry 키값이랑 벨류값 둘 다 배열로 넘겨줌
 const values = Object.values(nationWidth);
+//value 메소드는 전달된 파라미터 객체가 가지는 속성의 값들로 이루어진 배열을 뜻한다.
 console.log(values);
 
 let gap = Math.max.apply(null, values);
 let item = [];
 
 for (let i in entry) {
+  //최솟값 찾는 알고리즘
   if (gap > Math.abs(entry[i][1] - w)) {
     gap = Math.abs(entry[i][1] - w);
     item = entry[i];
