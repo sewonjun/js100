@@ -15,3 +15,17 @@ function solution(n) {
 
 const 악수의수 = 59;
 console.log(solution(악수의수));
+
+//내 풀이
+let 총악수 = parseInt(54, 10);
+let result = [];
+for (i = 1; i++; ) {
+  let 악수 = (i * i - 1) / 2;
+  if (총악수 < 악수) {
+    break;
+  } else {
+    result.push({ people: i });
+  }
+}
+
+console.log(result.pop());
