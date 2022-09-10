@@ -24,8 +24,10 @@ for (i = 1; i++; ) {
   if (총악수 < 악수) {
     break;
   } else {
-    result.push({ people: i });
+    result = i;
   }
 }
 
-console.log(result.pop());
+let 사람의수 = result;
+let 민규악수 = 총악수 - (사람의수 * (사람의수 - 1)) / 2;
+console.log(민규악수, 사람의수 + 1);
