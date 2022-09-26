@@ -35,15 +35,19 @@ for (let s of sp) {
         console.log(search);
         s[search - 1] = "*";
       }
+      //오른쪽 지뢰처리
       if (search < 4) {
         s[search + 1] = "*";
       }
+      //마지막 배열이 아니고서야 왼쪽도 지뢰 처리를 해야함
       if (count > 0) {
         sp[count - 1][search] = "*";
       }
+      //위에 지뢰처림?
       if (count < 4) {
         sp[count + 1][search] = "*";
       }
+      // 아래 지뢰 처리함
     }
   }
   count += 1;
