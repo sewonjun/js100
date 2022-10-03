@@ -16,5 +16,6 @@ for (let i = 0; i < person.length; i++) {
       result.push([obj1[j][0]]);
     }
 }
+console.log(result);
 console.log(result.join(" "));
 console.log(plate_sort);
