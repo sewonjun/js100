@@ -1,5 +1,5 @@
 const medi_A = "ABCDEFGH".split("");
-console.log(medi_A);
+// console.log(medi_A);
 
 //Math.random 에서 두 수 사이에 정수 난수 생성하기
 function getRandomInt(min, max) {
@@ -9,14 +9,13 @@ function getRandomInt(min, max) {
   return random;
 }
 
-//97 122는 소문자 아스키문자
+//69 90 대문자 아스키문자
 //
 function getGUID(length) {
-  //97-122 사이에 랜덤한 정수 만들기
+  //69 90 사이에 랜덤한 정수 만들기
   let result = [];
   while (result.length < 8) {
-    let randomLetters = String.fromCharCode(getRandomInt(65, 90));
-
+    let randomLetters = String.fromCharCode(getRandomInt(69, 90));
     if (!result.includes(randomLetters)) {
       result.push(randomLetters);
     }
@@ -26,21 +25,21 @@ function getGUID(length) {
   return result;
 }
 let medi_total = [];
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 1000; i++) {
   medi_total.push(getGUID(8));
 }
 
-console.log(medi_total);
+// console.log(medi_total);
 
-// let medi_match = [];
+let final = [];
+for (let i of medi_total) {
+  let setUser = medi_A;
+  let setTotal = new Set(i);
+  let interSection = new Set([...setUser].filter((x) => setTotal.has(x)));
+  if (interSection.size === parseInt(4, 10)) {
+    final.push(i);
+  }
+}
 
-//4글자 겹치는거 확인 코드
-// for (let i of medi_total) {
-//     for(let j of medi_A){
-//         let match_num = [];
-//         if(i.includes(j)){
-//             match_num.push(j);
-//         }
-//         console.log(match_num);
-//     }
-//   }
+// console.log("final", final);
+console.log(final.length);
