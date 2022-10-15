@@ -6,31 +6,40 @@ function sol(n, l) {
   let man = new Array(n).fill(0);
   console.log(man);
   //모듬 택배가 상하차 되었으면 종료
-  while (l.length !== 1) {
+  while (l.length !== 0) {
     for (let j = 0; j < man.length; j++) {
       if (man[j] === 0 && l) {
         man[j] += l.shift();
       }
+    }
+    if (l.length === n - 1) {
+      Math.max.apply(null, l) == 1;
+      answer += 1;
+      return false;
+    } else if (l.length === 1) {
+      answer += l[0];
+    } else {
+      return false;
     }
     //택배원들 배송거리 -1 처리
     man = man.map((x) => x - 1);
     console.log(man);
     //1회 반복당 1의 시간 증가
     answer += 1;
-    if (l.length === 1) {
-      for (e of l) {
-        answer += e;
-      }
-    }
-  }
 
-  //   console.log(Math.max.apply(null, man));
-  //   answer += Math.max.apply(null, man);
+    //남은 숫자가 하나일때
+    // for (e of l) {
+    //   answer += e;
+    // }
+  }
   return answer;
 }
 
-const postMan = 2;
-const deliveryService = [1, 2, 1, 1, 2, 2, 2, 3];
+//   console.log(Math.max.apply(null, man));
+//   answer += Math.max.apply(null, man);
+
+const postMan = 3;
+const deliveryService = [1, 2, 1, 3, 3, 3, 2, 2];
 console.log(sol(postMan, deliveryService));
 
 /*******
