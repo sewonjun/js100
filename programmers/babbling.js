@@ -11,28 +11,31 @@
 //1. 매치하는 부분을 찾으면.. 지울지 .. 아니면 slice를 해야 하는지..
 //2. 연속하는 글자는 발음할 수 없다는 부부을 처리할 방법..
 const able = ["aya", "ye", "woo", "ma"];
-const babbling = ["aya", "ayayewoomawooma", "woowoo", "maa"];
+const babbling = ["aya", "ayayeayawoomawooma", "woowoo", "maa"];
 function solution(a) {
   let answer = 0;
   let matchArray = [];
   for (e of a) {
     matchArray = [];
-    for (word of able) {
-      //match되는 음절이 있는지 찾는중..
-      if (e.match(word)) {
-        let matchWord = e.match(word);
-        matchArray.push(matchWord);
-        e = e.replace(matchWord, "");
-        console.log(e);
-        //replace시키고 길이가 남았는지..
-        if (e.length === 0) {
-          answer += 1;
-          break;
-        } else {
-          continue;
+    function recursive(e) {
+      for (word of able) {
+        //match되는 음절이 있는지 찾는중..
+        if (e.match(word)) {
+          let matchWord = e.match(word);
+          matchArray.push(matchWord);
+          e = e.replace(matchWord, "");
+          console.log(e);
+          //replace시키고 길이가 남았는지..
+          if (e.length === 0) {
+            answer += 1;
+            break;
+          } else {
+            recursive(e);
+          }
         }
       }
     }
+    recursive(e);
     for (i = 0; i < matchArray.length; i++) {
       if (matchArray[i] === matchArray[i + 1]) {
         answer -= 1;
