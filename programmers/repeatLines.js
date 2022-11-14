@@ -35,8 +35,8 @@ function solution(lines) {
       return second[1] - first[1];
     });
   }
-
-  let arrayB = getSortedArr(arrayA);
+  let arrayB = [];
+  arrayB = getSortedArr(arrayA);
   console.log(arrayB);
   let arrayC = [];
   for (e of arrayB) {
