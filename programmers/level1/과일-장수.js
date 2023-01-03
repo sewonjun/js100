@@ -9,3 +9,4 @@ function solution(k, m, score) {
   }
   return answer;
 }
+s
