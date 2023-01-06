@@ -69,6 +69,7 @@ function orderBracket(arrayBracket) {
       }
     }
   }
+
   return true;
 }
 console.log(solution(s));
