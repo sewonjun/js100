@@ -1,38 +1,36 @@
-function solution(number, k) {
-    var answer = '';
-    const firstOperation = function (number,k){
+function solution(number, k){
+    debugger;
+    let answer = "";
+     let numberLength = number.length - k;
+    let rest;
+    while(k > 0){
         let currentNum = 0;
-        let indexOfAnswer = 0;
-        const returnLength = number.length - k;
-        for(let i=0; i<k; i++){
-            if( k === 1){
-                 nextNum = number[i];
+        let idxOfNum;
+        for(let i=0; i <= number.length-k; i++){
+            const restLength = number.length - k
+            const nextNum = number.slice(i, i+restLength);
+            if(nextNum.length !== restLength){
+                break;
             }
-            const nextNum = number.slice(i, returnLength+i);
-            if(currentNum > nextNum){
+
+            if(Number(currentNum) > Number(nextNum)){
                 continue;
-            } else {
+            } else if (Number(currentNum) <= Number(nextNum)) {
                 currentNum = nextNum;
-                indexOfAnswer = i;
+                idxOfNum = i;
             }
         }
-        answer += number[indexOfAnswer];
-        if(answer.length < returnLength){
-            console.log("여기는 오니?")
-            number = number.slice(indexOfAnswer+1);
-            k = k - 1;
-            console.log(number, k);
-            firstOperation(number, k);
-        } else{
-            return answer;
-        }
+        answer += number[idxOfNum];
+        k = k - idxOfNum;
+        number = number.slice(idxOfNum+1);
+        rest = number;
     }
-    console.log(firstOperation(number, k))
+    if(answer.length !== numberLength){
+        answer += rest;
+    }
+    return answer;
 }
 
-const number = "1924";
 
-const k = 2;
-
-
-solution(number, k);
+const number = "93939";
+const k = 3;
