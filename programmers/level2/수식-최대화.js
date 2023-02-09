@@ -1,15 +1,54 @@
 function solution (expression) {
-    expression = splitExpression(expression);
-    const operators = expression[1];
-    console.log(operators);
+    const preprocessing = splitExpression(expression);
+    const operators = preprocessing[1];
+    const calculateExpression = preprocessing[0];
+    const everyOperatorAble = getPermutations(operators, operators.length);
 
-    const operatorCombination = [];
-    operators.forEach((element, index, arr) => {
-        const rest = [...arr.splice(0,index), ...arr.splice(index+1)];
-        console.log(rest);
-    })
+    const total = [];
+    everyOperatorAble.forEach(operatorArray => {
+        let copyExpression = [...calculateExpression];
+        operatorArray.forEach(operator => calculate(operator, copyExpression))
+        total.push(Math.abs(copyExpression));
+        }
+    )
 
+
+    function calculate(operator, array){
+        while(array.indexOf(operator) !== -1){
+            const indexOfOperator = array.indexOf(operator);
+            let calculated;
+
+            if (operator === "-") {
+                calculated = Number(array[indexOfOperator-1]) - Number(array[indexOfOperator+1]);
+            };
+            if (operator === "+") {
+                calculated = Number(array[indexOfOperator-1]) + Number(array[indexOfOperator+1]);
+            };
+            if (operator === "*") {
+                calculated = Number(array[indexOfOperator-1]) * Number(array[indexOfOperator+1]);
+            };
+
+            array.splice(indexOfOperator-1, 3, calculated);
+        }
+    }
+
+    return Math.max(...total)
 }
+
+function getPermutations (arr, selectNumber) {
+    const results = [];
+    if (selectNumber === 1) return arr.map((el) => [el]);
+
+    arr.forEach((fixed, index, origin) => {
+        const rest = [...origin.slice(0, index), ...origin.slice(index+1)]
+        const permutations = getPermutations(rest, selectNumber - 1);
+        const attached = permutations.map((el) => [fixed, ...el]);
+        results.push(...attached);
+    });
+
+    return results;
+}
+
 
 function splitExpression(expression){
     const total = [];
@@ -29,16 +68,17 @@ function splitExpression(expression){
             temp.push(element)
         }
     }
+    total.push(temp);
+
     const final = [];
     operator = [...operator];
     const [arr, operators] = [final, operator];
+
     total.map(element => final.push(element.join("")));
+
     return [arr, operators];
 }
 
-const expression = "100-200*300-500+20";
+// const expression = "100-200*300-500+20";
 
-// const expression = "50*6-3*2"
-
-
-console.log(solution(expression));
+const expression = "50*6-3*2"
