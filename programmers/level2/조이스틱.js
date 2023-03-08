@@ -1,13 +1,14 @@
 function solution(name) {
     var answer = 0;
-    const upButton = [];
-    const downButton = ["A"];
+    const upButton = []; //위로 버튼 조작시
+    const downButton = ["A"]; // 아래로 버튼 조작시
     for (let i = 65; i <= 90; i++) {
       upButton.push(String.fromCharCode(i));
     }
     for (let i = 90; i > 65; i--) {
       downButton.push(String.fromCharCode(i));
     }
+
     let count = 0;
     const splitedName = name.split("");
     function validateAllA(array) {
@@ -18,25 +19,62 @@ function solution(name) {
         return false;
       }
     }
-
-    if(validateAllA(splitedName) === true){
+    function moveStick(element, count){
+      const upNumber = upButton.indexOf(element);
+      const downNumber = downButton.indexOf(element);
+      console.log(upNumber, downNumber);
+      upNumber >= downNumber
+        ? (count += downNumber)
+        : (count += upNumber )
+    }
+    if(validateAllA(splitedName)){
         return answer = 0;
-    } 
+    }
     else {
-        for (let i = 0; i < splitedName.length; i++) {
-            if (splitedName[i] === "A") {
-             splitedName[i+1] !== "A" ? count+1 : count;
+      let countLeft = 0;
+      for (let i = 0; i < splitedName.length; i++) {
+          if (splitedName[i] === "A") {
+            const splicedName = splitedName.slice(i);
+            if(validateAllA(splicedName)){
+              break;
             } else {
-              const upNumber = upButton.indexOf(splitedName[i]);
-              const downNumber = downButton.indexOf(splitedName[i]);
-              console.log(upNumber, downNumber);
-              upNumber >= downNumber
-                ? (count += downNumber)
-                : (count += upNumber ;
+              countLeft += 1;
+            }
+          } else {
+            moveStick(splitedName[i], countLeft);
+            if(i !== splitedName.length - 1){
+              countLeft += 1;
             }
           }
+        }
+      let countRight = 0;
+      moveStick(splitedName[0], countRight);
+      for (let i = splitedName.length - 1; i > 0; i--) {
+        if (splitedName[i] === "A") {
+          const splicedName = splitedName.slice(1, i + 1);
+          if(validateAllA(splicedName)){
+            break;
+          } else {
+            if(i !== 1){
+              countRight += 1;
+            }
+          }
+        } else {
+          moveStick(splitedName[i], countRight);
+          if(i !== 1){
+            countRight += 1;
+          }
+        }
+      }
+
+      console.log("최종",countLeft, countRight);
     }
     
     console.log(count);
-    return answer ;
+    return count ;
 }
+
+// const names = "JEROEN"
+const names = "JAANA"
+
+solution(names);

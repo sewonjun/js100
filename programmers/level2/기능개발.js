@@ -1,38 +1,36 @@
 function solution(progresses, speeds) {
-    var answer = [];
-    const processingTask = [...progresses];
-    let finishedTask = [];
-    let taskLeft = 0;
-    let flag = true;
-    while (true) {
-        if(!processingTask.length){
-            break;
-        }
-        while(processingTask[0] < 100){
-            for(let i = 0; i < processingTask.length; i++){
-                processingTask[i] += speeds[i];
-            }
-        }
-        console.log("processingTask", processingTask);
-        for(let i = 0; i < processingTask.length; i++){
-            let temp = 0;
-            if(processingTask[i] < 100 ){
-                processingTask.splice(0, i);
-                speeds.splice(0, i);
-                // console.log(processingTask, speeds);
-                finishedTask.push(i);
-                break;
-            } else if (i === processingTask.length -1){
-                processingTask.splice(0);
-                speeds.splice(0);
-                finishedTask.push(i+1)
-            }
-        }
-        console.log(finishedTask, processingTask);
-        // return true;
+  const processingTask = [...progresses];
+  let finishedTask = [];
+
+  while (true) {
+    if(!processingTask.length){
+      break;
     }
 
-    return finishedTask;
+    while(processingTask[0] < 100){
+      for(let i = 0; i < processingTask.length; i++){
+        processingTask[i] += speeds[i];
+        }
+      }
+
+    for(let i = 0; i < processingTask.length; i++){
+
+      if(processingTask[i] < 100 ){
+        processingTask.splice(0, i);
+        speeds.splice(0, i);
+        finishedTask.push(i);
+
+        break;
+      } else if (i === processingTask.length -1){
+        processingTask.splice(0);
+        speeds.splice(0);
+        finishedTask.push(i+1)
+      }
+    }
+    console.log(finishedTask, processingTask);
+  }
+
+  return finishedTask;
 }
 
 // const progresses = [93, 30, 55];
