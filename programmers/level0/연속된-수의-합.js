@@ -1,3 +1,9 @@
+let fs = require('fs');
+let input = fs.readFileSync("예제.txt").toString().split(' ');
+
+let num = Number(input[0]);
+let total = Number(input[1]);
+
 function solution(num, total) {
   var answer = [];
   const middle = Math.floor(total / num);
@@ -28,3 +34,6 @@ function solution(num, total) {
   answer.push(...temp);
   return answer;
 }
+
+const answer = solution(num, total);
+console.log(answer);
