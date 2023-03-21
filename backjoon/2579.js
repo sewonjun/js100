@@ -2,6 +2,8 @@ let fs = require('fs');
 let input = fs.readFileSync("예제.txt").toString().trim().split('\n').map(el => Number(el));
 ///dev/stdin
 
+
+//춘구님 정답
 const [count, ...scores] = input;
 
 const dp = new Array(count).fill(0);
