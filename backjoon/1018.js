@@ -8,10 +8,10 @@ function solution() {
   const [chessHeight, chessWidth] = chessSize; // 10 13
   const currentBoards = [];
 
-  for(let i = 8; i <= chessHeight; i++){
+  for (let i = 8; i <= chessHeight; i++) {
     const currentBoardHeight = givenBoard.slice(i - 8, i);
 
-    for(let j = 8; j <= chessWidth; j++){
+    for (let j = 8; j <= chessWidth; j++) {
       const currentBoardWidth = currentBoardHeight.map((element) => element.slice(j - 8, j));
       currentBoards.push(currentBoardWidth);
     }
@@ -28,17 +28,17 @@ function verifyChess(board, color) {
   let blackFirst = null;
   let whiteFirst = null;
 
-  if(color === "black"){
+  if (color === "black") {
     blackFirst = true;
   }
 
-  if(color === "white"){
+  if (color === "white") {
     whiteFirst = true;
   }
 
   board.forEach((oneline) => {
     const line = oneline.split("");
-    if(blackFirst){
+    if (blackFirst) {
       const uncorrectBoard = line.filter((oneBoard, index) => {
         if(oneBoard !== blackFirstBoard[index]){
           return true;
@@ -54,9 +54,9 @@ function verifyChess(board, color) {
       return;
     }
 
-    if(whiteFirst){
+    if (whiteFirst) {
       const uncorrectBoard = line.filter((oneBoard, index) => {
-        if(oneBoard !== whiteFirstBoard[index]){
+        if (oneBoard !== whiteFirstBoard[index]) {
           return true;
         } else {
           return false;
@@ -69,7 +69,7 @@ function verifyChess(board, color) {
 
       return;
     }
-  })
+  });
 
   return uncorrectBoardCount;
 }
