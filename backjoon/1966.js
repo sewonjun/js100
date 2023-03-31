@@ -1,34 +1,49 @@
 let fs = require('fs');
-let input = fs.readFileSync("예제.txt").toString().trim().split('\n');
+let input =
+fs.readFileSync("예제.txt")
+.toString()
+.trim()
+.split('\n');
 ///dev/stdin
 
-const testNumber = input[0];
+const testNumber = input[0]; // 출력해야할 답 갯수
 const testCase = input.slice(1).map(el => el.trim().split(" "));
+const answerArray = [];
+for(let i = 0; i < testCase.length; i+=2){
+  //여기서부터 주어진 문제에 대한 해답을 얻기 위한 로직
+    const [currentQueueLength, targetIndex] = [...testCase[i].map(el => Number(el))]; //주어지는 큐의 길이, 목표 인덱스
+    const currentQueue = testCase[i+1];
+    let numberedCurrentQueue = currentQueue.map((el, i) => [i, el]); // [인덱스, 값]
+    let count = 0;
+    let answer;
 
-for (let i = 0; i < testCase.length; i+=2) {
-  const [queueLength, question] = testCase[i].map(el => Number(el));
-  const queue = testCase[i+1].map(el => Number(el));
-  let numberedQueue = []; // 인덱스랑 숫자랑 같이 있는 배열
-  let tempQueue = [];
-  for (let i = 0; i < queue.length; i++) {
-    numberedQueue.push([i, queue[i]]);
-  }
-  function verifyNumber(currentNumber){
-    const answer = numberedQueue.map(el => {
-      if (el[1] > currentNumber) {
-        return false;
-      } else {
+    function verifyFirstOut(element) {
+      const firstOut = Math.max(...numberedCurrentQueue.map(el => el[1]));
+
+      if(Number(element[1]) === firstOut){
         return true;
+      } else {
+        return false;
       }
-    })
-    return answer
-  }
-  // while(numberedQueue.length){
-    for (let i = 0; i < numberedQueue.length; i++) {
-      const currentNumber = numberedQueue[i];
-      numberedQueue = numberedQueue.slice(i+1);
-      const verified = verifyNumber(currentNumber[1], queue);
-      console.log(verified);
     }
-  // }
+    while(true){
+      if (answer) break;
+      for (let j = 0; j < numberedCurrentQueue.length; j++) {
+        if (verifyFirstOut(numberedCurrentQueue[j])) {
+          count++;
+
+          if (numberedCurrentQueue[j][0] === targetIndex) {
+            answer = count;
+            break;
+          } else {
+            //이 부분을 구현하려다가 오래걸림.. 그냥 slice 쓰자..
+            numberedCurrentQueue = [...numberedCurrentQueue.slice(j+1), ...numberedCurrentQueue.slice(0, j)]
+            break;
+          }
+        }
+        }
+        // console.log(numberedCurrentQueue);
+    }
+    answerArray.push(answer);
 }
+console.log(answerArray.join("\n"));
