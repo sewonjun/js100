@@ -1,5 +1,4 @@
 let fs = require('fs');
-const { machine } = require('os');
 let input =
 fs.readFileSync("예제.txt")
 .toString()
