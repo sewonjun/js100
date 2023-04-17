@@ -33,7 +33,7 @@ function solution() {
     });
     return answer;
   }
-
+  console.log(finalAnswer);
   return finalAnswer.join("\n");
 }
 

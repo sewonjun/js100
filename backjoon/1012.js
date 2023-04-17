@@ -9,7 +9,7 @@ fs.readFileSync(filePath)
 const questionNumber = input[0];
 const eachTestCase = [];
 const divideQuestion = input.slice(1).map(el => el.split(" "));
-console.log(eachTestCase);
+// console.log(eachTestCase);
 divideQuestion.forEach(el => {
   if(el.length === 3){
     eachTestCase.push([el]);
@@ -20,17 +20,13 @@ divideQuestion.forEach(el => {
 eachTestCase.forEach( (array) => {
     const [M, N, K] = array[0].map(el => Number(el));
     const cabbageCoordinate = array.slice(1).map(arr => arr.map(el => Number(el)));
-    let farm = Array(N).;
-    farm[1][2] = 1;
-    console.log(farm);
-    // cabbageCoordinate.forEach(arr => {
-    //   const [m, n] = arr;
-    //   for(let i = 0; i < N; i++){
-    //     for( let j = 0; j < M; i++) {
-    //       if(i === n && j === )
-    //     }
-    //   }
-    // })
+    const farmWidth = new Array(N).fill(0);
+    let farm = Array.from(farmWidth, x => new Array(M).fill(0));
+
+    cabbageCoordinate.forEach(arr => {
+      const [m, n] = arr;
+      farm[n][m] = 1;
+    })
     console.table(farm);
   }
 )
