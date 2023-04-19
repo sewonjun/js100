@@ -1,4 +1,3 @@
-const { verify } = require("crypto");
 let fs = require("fs");
 const filePath = process.platform === "linux" ? "./dev/stdin" : "예제.txt";
 let input = fs.readFileSync(filePath).toString().trim().split("\n");
@@ -31,8 +30,9 @@ function solution(array) {
     .slice(1)
     .map((arr) => arr.map((el) => Number(el)));
   const farmHeight = new Array(N).fill(0);
-  let farm = Array.from(farmHeight, (x) => new Array(M).fill(0));
+  let farm = Array.from(farmHeight, (arr) => new Array(M).fill(0)); // 제발.. 기본 좀 생각하고 살자.
 
+  //일단 배추 위치 처리하기
   cabbageCoordinate.forEach((arr) => {
     const [m, n] = arr;
     farm[n][m] = 1;
